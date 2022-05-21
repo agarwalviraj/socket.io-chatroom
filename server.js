@@ -29,7 +29,7 @@ io.on("connection", (socket) => {
       .to(user.room)
       .emit(
         "message",
-        formatMessage(botName, `${username} has joined the chat`)
+        formatMessage(botName, `${username} has joined the chat`),
       );
 
     //send users and room info
@@ -52,7 +52,7 @@ io.on("connection", (socket) => {
     if (user) {
       io.to(user.room).emit(
         "message",
-        formatMessage(botName, `${user.username}has left the chat`)
+        formatMessage(botName, `${user.username}has left the chat`),
       );
       //send users and room info
       io.to(user.room).emit("roomUsers", {
@@ -63,7 +63,7 @@ io.on("connection", (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
